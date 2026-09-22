@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI SBOM Generator: The First Open-Source Tool for AI Transparency — AISUF</title>
+  <meta name="description" content="We announced something pretty exciting during RSAC 2025: the release of the first-ever open-source tool to generate AI SBOMs for Hugging Face models.">
+  <meta name="theme-color" content="#22221f">
+  <link rel="canonical" href="https://aisuf.org/blogs/f/ai-sbom-generator">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="AISUF">
+  <meta property="og:title" content="AI SBOM Generator: The First Open-Source Tool for AI Transparency">
+  <meta property="og:description" content="We announced something pretty exciting during RSAC 2025: the release of the first-ever open-source tool to generate AI SBOMs for Hugging Face models.">
+  <meta property="og:url" content="https://aisuf.org/blogs/f/ai-sbom-generator">
+  <meta property="og:image" content="https://aisuf.org/assets/images/blogs/Dmitry_and_Helen.jpg">
+  <meta property="og:image:alt" content="Dmitry Raidman and Helen Oakley seated together">
+  <meta property="og:image:width" content="1536">
+  <meta property="og:image:height" content="1333">
+  <meta property="article:published_time" content="2025-05-05">
+  <meta property="article:section" content="Industry News">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI SBOM Generator: The First Open-Source Tool for AI Transparency",
+  "description": "We announced something pretty exciting during RSAC 2025: the release of the first-ever open-source tool to generate AI SBOMs for Hugging Face models.",
+  "datePublished": "2025-05-05",
+  "articleSection": "Industry News",
+  "image": "https://aisuf.org/assets/images/blogs/Dmitry_and_Helen.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Helen Oakley",
+    "url": "https://linktr.ee/helen.oakley"
+  },
+  "mainEntityOfPage": "https://aisuf.org/blogs/f/ai-sbom-generator",
+  "url": "https://aisuf.org/blogs/f/ai-sbom-generator",
+  "publisher": {
+    "@type": "Organization",
+    "name": "AISUF",
+    "url": "https://aisuf.org/"
+  }
+}
+  </script>
+  <link rel="stylesheet" href="/assets/css/site.css?v=phase3-5">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="/" aria-label="AISUF home">AISUF</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/#related-work">Related Work</a>
+        <a href="https://github.com/AISUF">GitHub</a>
+        <a href="https://www.linkedin.com/company/aisuf/">LinkedIn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" class="article-shell">
+    <a class="article-back" href="/"><span aria-hidden="true">←</span> Back</a>
+    <article>
+      <header class="article-header">
+        <p class="article-meta"><span>Industry News</span><span aria-hidden="true">·</span><time datetime="2025-05-05">May 5, 2025</time></p>
+        <h1 class="article-title">AI SBOM Generator: The First Open-Source Tool for AI Transparency</h1>
+        <p class="article-byline"><a href="https://linktr.ee/helen.oakley">Helen Oakley</a></p>
+      </header>
+      <div class="article-body">
+      <p><strong>🚀</strong> <em>Built for the community. Built for AI transparency.</em></p>
+      <figure class="article-figure">
+        <img src="/assets/images/blogs/Dmitry_and_Helen.jpg" width="1536" height="1333" alt="Dmitry Raidman and Helen Oakley seated together" decoding="async">
+        <figcaption>Dmitry Raidman and Helen Oakley</figcaption>
+      </figure>
+      <p>We <a href="https://www.linkedin.com/posts/helen-oakley_ai-sbom-rsac2025-activity-7322790946897637376-0Pqk">announced</a> something pretty exciting during RSAC 2025: the release of the <a href="http://owasp-genai-aibom.org/"><strong>first-ever open-source tool to generate AI SBOMs for Hugging Face models</strong></a>. This tool, created by me (<a href="https://linktr.ee/helen.oakley">Helen Oakley</a>) and <a href="https://www.linkedin.com/in/draidman/">Dmitry Raidman</a>—two folks who’ve been knee-deep in application security, software supply chain, and AI for quite some time—marks a major step forward in bringing transparency and security into the world of Artificial Intelligence.</p>
+      <p>The reception from the community? Overwhelmingly positive. It’s been incredibly energizing to see this project spark real <a href="https://www.youtube.com/watch?v=iN9HWMzc6jY">conversations</a> about accountability in AI. And honestly, this is just the beginning.</p>
+      <h2><strong>So, </strong><strong>What’s</strong><strong> an AI SBOM and Why Should You Care?</strong></h2>
+      <p>Let’s rewind for a second. Before we talk AI SBOM, let’s talk <strong>SBOM</strong> (Software Bill of Materials). Think of it like an ingredient list on a box of cookies—or a drink label (<a href="https://www.linkedin.com/posts/draidman_rsac2025-ai-aisbom-activity-7323478746689142784-avHB">shoutout to Dmitry’s <em>beerBOM</em> analogy from RSAC</a>). If you care about what goes into your food or drink, you should care just as much about what goes into your software.</p>
+      <p>An SBOM is that ingredient list, but for code. It helps organizations identify what software components they’re using, so they can find and fix vulnerabilities faster, manage licensing, and stay compliant. Two major formats are widely adopted today: <strong>CycloneDX</strong> and <a href="https://spdx.dev/"><strong>SPDX</strong></a>.</p>
+      <p>Now, <strong>AI SBOM</strong> takes this a step further. It includes not just software dependencies, but also information unique to AI systems:</p>
+      <ul>
+        <li>Where the model came from</li>
+        <li>What architecture and frameworks it uses</li>
+        <li>How and with what data it was trained</li>
+        <li>Energy consumption and licensing</li>
+      </ul>
+      <p>That visibility is critical. AI SBOMs help with <strong>transparency, evidence collection, risk management, and secure-by-design development</strong>. They’re also becoming essential for aligning with emerging standards and regulations like the <a href="https://artificialintelligenceact.eu/"><strong>EU AI Act</strong></a>, <a href="https://www.iso.org/standard/81230.html"><strong>ISO 42001</strong></a>, and <a href="https://financialpost.com/technology/tech-news/opinion-why-agentic-ai-is-forcing-a-rethink-of-business-risk">other</a>.</p>
+      <h2><strong>Why Hugging Face?</strong></h2>
+      <p>If you&#x27;re building with AI, chances are you&#x27;ve used a model from <a href="https://huggingface.co/">Hugging Face</a>. It&#x27;s become the go-to platform for sharing, discovering, and deploying machine learning models—especially in natural language processing and generative AI.</p>
+      <p>📊 Here are some <a href="https://route06.com/insights/71">highlights</a>:</p>
+      <ul>
+        <li><strong>Over 900,000 models</strong>, <strong>200,000 datasets</strong>, and <strong>300,000 demo apps (Spaces)</strong> are hosted on the <a href="https://huggingface.co/docs/hub/en/index">Hugging Face Hub</a>.</li>
+        <li><strong>More than 50,000 organizations</strong> utilize Hugging Face, including major tech companies like Meta, Google, Microsoft, and Amazon.</li>
+        <li>Popular models like <strong>BERT</strong> and <strong>DistilBERT</strong> receive over <strong>100,000 weekly downloads.</strong></li>
+        <li>The <strong>Transformers</strong> library by Hugging Face has garnered over <strong>71,800 stars on GitHub</strong>, reflecting its popularity among developers.</li>
+      </ul>
+      <p>By focusing our tool on Hugging Face models, we&#x27;re addressing a significant portion of the AI landscape. Given Hugging Face&#x27;s widespread adoption, enhancing transparency and security here tackles a substantial chunk of industry risk.</p>
+      <h2><strong>How the AI SBOM Generator Helps</strong></h2>
+      <p>Our tool was built to close that gap.</p>
+      <p>It generates <strong>machine-readable AI SBOMs</strong> from Hugging Face model metadata in <strong>CycloneDX</strong><strong> format</strong>, directly supporting the <strong>real-world use cases defined by the </strong><a href="https://github.com/aibom-squad/AIBOM-Tiger-Team"><strong>AI SBOM Tiger Team</strong></a> (part of the <a href="https://www.cisa.gov/sbom">CISA.gov SBOM initiative</a>).</p>
+      <p>It effectively connects the dots between technical standards (CycloneDX/SPDX), community-driven use cases, and the operational needs of organizations that want to manage AI responsibly.</p>
+      <p>One unique bonus use case? This tool also helps with <strong>creating consistent </strong><a href="https://huggingface.co/docs/hub/en/model-cards"><strong>model cards</strong></a>—standardized documentation for models that can help internal teams and external consumers understand what’s inside and how to evaluate trust.</p>
+      <h2><strong>How It Works (No Deep Tech Knowledge Required)</strong></h2>
+      <p>We designed the AI SBOM Generator to be simple, visual, and accessible:</p>
+      <ul>
+        <li>Just enter a Hugging Face model ID or URL</li>
+        <li>The tool pulls available metadata and displays it in a clean, human-friendly view</li>
+        <li>You can download the actual AI SBOM <strong>.json file</strong> in <strong>CycloneDX format</strong></li>
+        <li>It also calculates a <strong>completeness score</strong> based on how much metadata is available for selected model</li>
+      </ul>
+      <p>About that score: it ranges from 0 to 100 and evaluates how well the model card supports transparency across key SBOM fields (like model name, version, license, training info, etc.). As the industry continues to evolve, and more AI SBOM fields get standardized, the scoring logic will grow with it—ensuring it stays relevant and useful. Further technical documentation can be found on <a href="https://github.com/aetheris-ai/aibom-generator">GitHub</a>.</p>
+      <h2><strong>Open Source, Open Collaboration: What’s Next</strong></h2>
+      <p>This tool is open-source for a reason: we want this to be a <strong>community-driven effort</strong>. We’re inviting feedback, ideas, and collaboration from across the AI, security, and software engineering worlds.</p>
+      <p>As the AI SBOM Tiger Team continues to define and refine guidance around use cases, we’ll continue evolving the tool to match. That includes enhancing the scoring logic, expanding automation features, and yes—eventually adding support for SPDX and AI SBOM enrichment capabilities.</p>
+      <p>We’re not making wild promises—but the vision is clear: help shape a future where every AI component is as trackable and trustworthy as the code it runs on.</p>
+      <h2><strong>Try the Tool Today—And Let Us Know What You Think!</strong></h2>
+      <p>👉 <a href="http://owasp-genai-aibom.org/"><strong>http://owasp-genai-aibom.org/</strong></a><br>🔧 Also listed in the <strong>CycloneDX</strong><strong> Tool Center</strong>: <a href="https://cyclonedx.org/tool-center">https://cyclonedx.org/tool-center</a></p>
+      <p><em>Transparency in AI isn’t optional—it’s the foundation for securing our shared future.</em></p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <p class="footer-credit">© 2026 AISUF. All rights reserved.</p>
+      <nav aria-label="Footer navigation">
+        <a href="https://github.com/AISUF">GitHub</a>
+        <a href="https://www.linkedin.com/company/aisuf/">LinkedIn</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
